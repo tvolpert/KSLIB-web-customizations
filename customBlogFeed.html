@@ -53,26 +53,15 @@
 (function () {
 	document.addEventListener('DOMContentLoaded', function() {
 	//load each latest entry into its respective container
-		$('#RefDesk .content').load('/Blog.aspx?CID=6 .entry:first', function() { 
-			var pubDate = Date.parse( $('#RefDesk .date').textContent);
-			$(this).closest('article').css('order', pubDate.toString() );
-			} );
-		$('#KGI .content').load('/Blog.aspx?CID=9 .entry:first' , function() { 
-			var pubDate = Date.parse( $(this).find('.date').textContent);
-			$(this).closest('article').css('order', pubDate.toString() );
-			} );
-		$('#TBT .content').load('/Blog.aspx?CID=10 .entry:first', function() { 
-			var pubDate = Date.parse( $(this).find('.date').textContent);
-			$(this).closest('article').css('order', pubDate.toString() );
-			} );
-		$('#LN .content').load('/Blog.aspx?CID=8 .entry:first', function() { 
-			var pubDate = Date.parse( $(this).find('.date').textContent);
-			$(this).closest('article').css('order', pubDate.toString() );
-			} );
-		$('#SWS .content').load('/Blog.aspx?CID=7 .entry:first', function() { 
-			var pubDate = Date.parse( $(this).find('.date').textContent);
-			$(this).closest('article').css('order', pubDate.toString() );
-			} ); });
 
-		})();
+		$('#RefDesk .content').load('/Blog.aspx?CID=6 .entry:first');
+		$('#KGI .content').load('/Blog.aspx?CID=9 .entry:first');
+		$('#TBT .content').load('/Blog.aspx?CID=10 .entry:first');
+		$('#LN .content').load('/Blog.aspx?CID=8 .entry:first');
+		$('#SWS .content').load('/Blog.aspx?CID=7 .entry:first');
+		//do a little sleight-of-hand to get these sorted by date published, newest to oldest
+		$('.blogCat .date').each(function() { var pubDate= (Date.parse(this.textContent) / 100000);  console.log(pubDate); $(this).closest('article').css('order', pubDate.toString); } )
+	});
+})();
+
 </script> <!--end current format-->
