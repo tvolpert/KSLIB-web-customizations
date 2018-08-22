@@ -54,7 +54,7 @@
 	document.addEventListener('DOMContentLoaded', function() {
 	//load each latest entry into its respective container
 		$('#RefDesk .content').load('/Blog.aspx?CID=6 .entry:first', function() { 
-			var pubDate = Date.parse( $(this).find('.date').textContent);
+			var pubDate = Date.parse( $('#RefDesk .date').textContent);
 			$(this).closest('article').css('order', pubDate.toString() );
 			} );
 		$('#KGI .content').load('/Blog.aspx?CID=9 .entry:first' , function() { 
@@ -74,7 +74,5 @@
 			$(this).closest('article').css('order', pubDate.toString() );
 			} ); });
 
-		});
-	})
-})();
+		})();
 </script> <!--end current format-->
