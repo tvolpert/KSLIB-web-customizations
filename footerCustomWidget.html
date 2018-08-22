@@ -1,0 +1,48 @@
+<!--add Niche Academy tutorials button-->
+<script src="https://my.nicheacademy.com/api/widget/kslib"></script>
+<style>
+/* bump Niche Academy tab down the page*/
+.nichSideBtns {
+	top: 75%!important;
+}
+</style>
+
+ <script type="text/javascript">
+
+
+
+(function(){
+//this is a fix for a big chunk of white space above the main banner on mobile
+	var banner1 = document.getElementById('banner1');
+	function chunkFix() {
+		if (window.innerWidth <  609 ) {
+			banner1.setAttribute('style', 'margin-top:0;');
+			console.log('aye aye capn');
+		} 
+	}
+	document.addEventListener('DOMContentLoaded', chunkFix);
+	window.addEventListener('resize', chunkFix);
+
+})();
+
+	// disable ALL links from opening in new window
+	//add IP address checking into all EBSCO links
+
+	document.addEventListener('readystatechange', function() {
+		var oldLink = 'authtype=url';
+		var newLink = 'authtype=ip,url';
+
+		var allLinks = document.getElementsByTagName('a');
+		var i;
+		for (i=0; i < allLinks.length; i++) {
+			if ( allLinks[i].href.match(oldLink) ) {
+				allLinks[i].href = allLinks[i].href.replace(oldLink, newLink);
+			}
+	
+			allLinks[i].setAttribute('target', '');
+			allLinks[i].setAttribute('rel','');
+			}
+		
+	});
+
+</script>

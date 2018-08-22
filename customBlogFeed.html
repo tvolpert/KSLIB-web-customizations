@@ -1,0 +1,71 @@
+<style>
+	.dim {
+	font-size: 8pt;
+	margin-left: 20px;
+   
+	}
+	.continueReading, .blog-category {
+		display: block;
+		margin-top: 12px;
+		text-align: right;
+		
+	}
+	.loading {
+		font-size: 2em;
+		display: block;
+		margin: auto;
+		text-align: center;
+	}
+</style> 
+<link href="/741144823.css" rel="stylesheet" type="text/css">
+<!--current format: load latest post each from specific blogs?-->
+<section id="customBlogFeed">
+	<article id="SWS">
+		<a class="blog-category" href="/Blog.aspx?CID=7">Statewide Online Services News</a>
+	<div class="content"></div>
+	</article>
+
+
+	<article id="KGI">
+		<a class="blog-category" href="/Blog.aspx?CID=9">KGI Online Library</a>
+	<div class="content"></div>
+	</article>
+		<article id="RefDesk">
+		<a class="blog-category" href="/Blog.aspx?CID=6">From The Reference Desk</a> 
+	<div class="content"></div>
+	</article>
+	<article id="TBT">
+	<a class="blog-category" href="/Blog.aspx?CID=10">Talking Books Talk</a>
+	<div class="content"></div>
+	</article>
+	<article id="LN">
+		<a class="blog-category" href="/Blog.aspx?CID=8">Librarian News</a>
+	<div class="content"></div>
+	</article>
+
+<p class="dim"><a href="/Blog.aspx" title="blog page" alt="blog page">View All Blogs</a></p>
+</section>
+<script type="text/javascript">
+(function () {
+	document.addEventListener('DOMContentLoaded', function() {
+		$('#RefDesk .content').load('/Blog.aspx?CID=6 .entry:first');
+		$('#KGI .content').load('/Blog.aspx?CID=9 .entry:first');
+		$('#TBT .content').load('/Blog.aspx?CID=10 .entry:first');
+		$('#LN .content').load('/Blog.aspx?CID=8 .entry:first');
+		$('#SWS .content').load('/Blog.aspx?CID=7 .entry:first');
+	});
+})();
+</script> <!--end current format-->
+
+<!--previous format: load the three (or however many show up on /Blog.aspx) latest posts from all blogs
+<section id="customBlogFeed">
+<div class="loading"><i class="fas fa-spin fa-spinner"></i></div>
+</section>
+<script type="text/javascript">
+(function () {
+	document.addEventListener('DOMContentLoaded', function() {
+		$('#customBlogFeed').load('/blog.aspx .entry');
+	});
+})();
+</script>
+<!-- end previous format -->
