@@ -60,7 +60,7 @@
 		$('#LN .content').load('/Blog.aspx?CID=8 .entry:first');
 		$('#SWS .content').load('/Blog.aspx?CID=7 .entry:first'); });
 		//do a little sleight-of-hand to get these sorted by date published, newest to oldest
-		loadAllBlogs.then(function() { $('.blogCat .date').each(function() { var pubDate= (Date.parse(this.textContent) / 100000);  console.log(pubDate); $(this).closest('article').css('order', pubDate.toString()); } )
+		loadAllBlogs.finally(function() { $('.blogCat .date').each(function() { var pubDate= (Date.parse(this.textContent) / 100000);  console.log(pubDate); $(this).closest('article').css('order', pubDate.toString()); } )
 		});
 	})
 
