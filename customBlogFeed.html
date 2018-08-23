@@ -1,3 +1,4 @@
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"></link>
 <style>
 	#customBlogFeed {
 		display: flex;
@@ -15,15 +16,28 @@
 		
 	}
 	.loading {
-		font-size: 2em;
-		display: block;
-		margin: auto;
-		text-align: center;
+		max-height: 300px;
+		overflow: hidden;
 	}
+#blogSpin {
+	display: none;
+	}	
+.loading #blogSpin {
+	display: block;
+	background-color:  white;
+	font-size: 6rem;
+	text-align: center;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 99;
+}
 </style> 
 <link href="/741144823.css" rel="stylesheet" type="text/css">
-<!--current format: load latest post each from specific blogs?-->
-<section id="customBlogFeed">
+<!--load latest post each from specific blogs-->
+<section id="customBlogFeed" class="loading">
+<div id="blogSpin"><i class="fa fa-spin fa-spinner"></i></div>
 	<article id="SWS" class="blogCat">
 		<a class="blog-category" href="/Blog.aspx?CID=7">Statewide Online Services News</a>
 	<div class="content"></div>
@@ -60,7 +74,7 @@
 		$('#LN .content').load('/Blog.aspx?CID=8 .entry:first');
 		$('#SWS .content').load('/Blog.aspx?CID=7 .entry:first'); });
 		//do a little sleight-of-hand to get these sorted by date published, newest to oldest
-		$( document ).ajaxComplete(function() { $('.blogCat .date').each(function() { var pubDate= (Date.parse(this.textContent) / 100000);  console.log(pubDate); $(this).closest('article').css('order', pubDate.toString()); } )
+		$( document ).ajaxComplete(function() { $('.blogCat .date').each(function() { var pubDate= (Date.parse(this.textContent) / 100000); $(this).closest('article').css('order', pubDate.toString()); $('#customBlogFeed').removeClass('loading')  } )
 		});
 	})
 
