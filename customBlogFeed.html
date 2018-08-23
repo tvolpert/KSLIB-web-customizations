@@ -78,8 +78,7 @@
 		//do a little sleight-of-hand to get these sorted by date published, newest to oldest		
 		$( document ).ajaxComplete(function() { $('.blogCat .date').each(function() { var pubDate = this.textContent + "2018"; pubDate = (Date.parse(pubDate) / 100000); $(this).closest('article').css('order', pubDate.toString());  }); })
 		});
-			
-	$( document ).ajaxComplete(function() {  $('#customBlogFeed').removeClass('loading'); } );
+	$( document ).ajaxStop(function() {  $('#customBlogFeed').removeClass('loading'); } );
 	})();
 
 </script> <!--end current format-->
